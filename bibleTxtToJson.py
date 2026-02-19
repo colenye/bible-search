@@ -1,8 +1,8 @@
 import json
-BIBLEFILE="translations/asv.txt"
+BIBLEFILE="translations/cpdv.txt"
 d={}
 
-with open(BIBLEFILE) as file:
+with open(BIBLEFILE, 'r', encoding='utf-8') as file:
     
     s = file.readline()
     while s:
