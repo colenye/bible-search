@@ -38,16 +38,30 @@ if words:
         for c in results:
             if c:
                 lenResults.append(len(c))
-        st.bar_chart(lenResults)
+        lenDf = pd.DataFrame({
+            "results" : lenResults
+        }, index=words)  
+        st.bar_chart(lenDf)
 
         for index, c in enumerate(lenResults):
             st.write(f"Found **{c}** results for {words[index]}")
 
         lenDf = pd.DataFrame(lenResults)
-        for result in results:
+        for index, result in enumerate(results):
+            st.header(words[index])
             df = pd.DataFrame(result)
 
             if not df.empty and not lenDf.empty:
                 st.dataframe(df)
+                
             else:
                 st.warning("no matches found")
+        
+        # Creates one big data frame of all words chosen
+        st.header("All")
+        df = pd.DataFrame(results)
+
+        if not df.empty and not lenDf.empty:
+            st.dataframe(df)
+        else:
+            st.warning("no matches found")
