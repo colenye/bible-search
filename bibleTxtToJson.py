@@ -1,5 +1,5 @@
 import json
-BIBLEFILE="asv.txt"
+BIBLEFILE="translations/asv.txt"
 d={}
 
 with open(BIBLEFILE) as file:
